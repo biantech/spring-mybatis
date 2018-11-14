@@ -1,3 +1,4 @@
+package com.biantech.ssmd.es;
 /**
  * @author
  * @date 2018/11/13

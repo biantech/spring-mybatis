@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.*;
 
 import com.biantech.ssmd.utils.GsonUtils;
-import com.sun.tools.doclets.formats.html.markup.ContentBuilder;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
