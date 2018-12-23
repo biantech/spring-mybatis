@@ -2,35 +2,28 @@ package com.biantech.ssmd.es;
 
 import java.util.Map;
 
+/**
+ * @author 
+ * @date 2018/2/24 16:10
+ */
 public class ESResponse {
-    boolean succeeded;
-    String errorType;
-    String errorMessage;
-    Map<String, Object> source;
-    String resultAsJsonString;
 
-    public String getResultAsJsonString() {
-        return resultAsJsonString;
-    }
+    private boolean isSucceeded;
 
-    public void setResultAsJsonString(String resultAsJsonString) {
-        this.resultAsJsonString = resultAsJsonString;
-    }
+    private String errorType;
 
-    public Map<String, Object> getSource() {
-        return source;
-    }
+    private String errorMessage;
 
-    public void setSource(Map<String, Object> source) {
-        this.source = source;
-    }
+    private Map<String, Object> source;
+
+    private String resultAsJsonString;
 
     public boolean isSucceeded() {
-        return succeeded;
+        return isSucceeded;
     }
 
     public void setSucceeded(boolean succeeded) {
-        this.succeeded = succeeded;
+        isSucceeded = succeeded;
     }
 
     public String getErrorType() {
@@ -47,5 +40,21 @@ public class ESResponse {
 
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
+    }
+
+    public Map<String, Object> getSource() {
+        return source;
+    }
+
+    public void setSource(Map<String, Object> source) {
+        this.source = source;
+    }
+
+    public String getResultAsJsonString() {
+        return resultAsJsonString;
+    }
+
+    public void setResultAsJsonString(String resultAsJsonString) {
+        this.resultAsJsonString = resultAsJsonString;
     }
 }
