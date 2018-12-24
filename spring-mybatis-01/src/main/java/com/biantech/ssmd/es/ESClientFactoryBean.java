@@ -3,7 +3,7 @@ package com.biantech.ssmd.es;
 import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -143,7 +143,10 @@ public class ESClientFactoryBean implements
         for (String remote : serverUris) {
             String ip = remote.substring(0, remote.indexOf(":"));
             String port = remote.substring(remote.indexOf(":") + 1, remote.length());
-            client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(ip), Integer.valueOf(port)));
+            //TransportClient client = new PreBuiltTransportClient(Settings.EMPTY)
+            //        .addTransportAddress(new TransportAddress(InetAddress.getByName("host1"), 9300))
+            //        .addTransportAddress(new TransportAddress(InetAddress.getByName("host2"), 9300));
+            client.addTransportAddress(new TransportAddress(InetAddress.getByName(ip), Integer.valueOf(port)));
         }
         return client;
     }
