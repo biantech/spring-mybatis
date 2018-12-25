@@ -1,5 +1,10 @@
 package com.biantech.ssmd.es;
 
+import org.elasticsearch.common.xcontent.XContentBuilder;
+import org.elasticsearch.common.xcontent.XContentFactory;
+
+import java.io.IOException;
+
 public class ESMappingBuilder {
    public static final String FIELD_PROPERTIES = "properties";
     private static final String FIELD_TYPE = "type";

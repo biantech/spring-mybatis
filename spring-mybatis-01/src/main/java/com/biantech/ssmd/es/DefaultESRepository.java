@@ -9,18 +9,17 @@ import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
 import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequestBuilder;
-import org.elasticsearch.action.admin.indices.delete.DeleteIndexResponse;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequest;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsResponse;
 import org.elasticsearch.action.admin.indices.mapping.get.GetMappingsRequestBuilder;
 import org.elasticsearch.action.admin.indices.mapping.get.GetMappingsResponse;
 import org.elasticsearch.action.admin.indices.mapping.put.PutMappingRequestBuilder;
-import org.elasticsearch.action.admin.indices.mapping.put.PutMappingResponse;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.*;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.support.master.AcknowledgedResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.cluster.metadata.MappingMetaData;
 import org.elasticsearch.common.collect.ImmutableOpenMap;
@@ -97,7 +96,7 @@ public class DefaultESRepository implements InitializingBean{
         }
         ESResponse esResponse = new ESResponse();
         try {
-            DeleteIndexResponse deleteIndexResponse = deleteIndexRequestBuilder.execute().actionGet();
+            AcknowledgedResponse deleteIndexResponse = deleteIndexRequestBuilder.execute().actionGet();
             esResponse.setSucceeded(deleteIndexResponse.isAcknowledged());
         } catch (Throwable e) {
             esResponse.setSucceeded(false);
@@ -167,7 +166,7 @@ public class DefaultESRepository implements InitializingBean{
         PutMappingRequestBuilder putMappingRequestBuilder = getClient().admin().indices().preparePutMapping(indexName);
         putMappingRequestBuilder.setSource(builder);
         putMappingRequestBuilder.setType(indexType);
-        PutMappingResponse putMappingResponse = putMappingRequestBuilder.execute().actionGet();
+        AcknowledgedResponse putMappingResponse = putMappingRequestBuilder.execute().actionGet();
         ESResponse esResponse = new ESResponse();
         esResponse.setSucceeded(putMappingResponse.isAcknowledged());
         return  esResponse;
@@ -192,7 +191,7 @@ public class DefaultESRepository implements InitializingBean{
         }
         ESResponse esResponse = new ESResponse();
         try {
-            PutMappingResponse putMappingResponse = putMappingRequestBuilder.execute().actionGet();
+            AcknowledgedResponse putMappingResponse = putMappingRequestBuilder.execute().actionGet();
             esResponse.setSucceeded(putMappingResponse.isAcknowledged());
         } catch (Throwable e) {
             esResponse.setSucceeded(false);

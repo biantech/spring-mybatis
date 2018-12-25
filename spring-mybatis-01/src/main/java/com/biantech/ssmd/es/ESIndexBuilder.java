@@ -1,5 +1,11 @@
 package com.biantech.ssmd.es;
 
+import org.apache.commons.lang3.StringUtils;
+import org.elasticsearch.common.xcontent.XContentBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class ESIndexBuilder {
     private Logger logger = LoggerFactory.getLogger(ESIndexBuilder.class);
     @Autowired
