@@ -20,6 +20,7 @@ public class ESConstants {
     public static final String FIELD_TYPE_DOUBLE = "double";
     public static final String FIELD_TYPE_FLOAT = "float";
     public static final String FIELD_TYPE_DATE = "date";
+    public static final String FIELD_TYPE_TEXT="text";
     public static final String COMPLETION_PRESERVE_SEPARATORS = "preserve_separators";
     public static final String COMPLETION_PRESERVE_POSITION_INCREMENTS = "preserve_position_increments";
     public static final String COMPLETION_MAX_INPUT_LENGTH = "max_input_length";

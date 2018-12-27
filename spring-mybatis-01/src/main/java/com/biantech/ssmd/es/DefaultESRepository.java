@@ -40,7 +40,7 @@ import org.springframework.beans.factory.InitializingBean;
  * @author 
  * @date 2018/2/27 14:03
  */
-public class DefaultESRepository implements InitializingBean{
+public class DefaultESRepository<T> implements InitializingBean{
     Logger logger = LoggerFactory.getLogger(DefaultESRepository.class);
 
     private TransportClient client;
@@ -249,7 +249,7 @@ public class DefaultESRepository implements InitializingBean{
         return getIndexMapping(indexName, indexName);
     }
 
-    public ESResponse createDocument(String indexName, String typeName, List docs) throws Exception {
+    public ESResponse createDocument(String indexName, String typeName, List<T> docs) throws Exception {
         if (StringUtils.isBlank(indexName)) {
             throw new NullPointerException("indexName can not be null");
         }

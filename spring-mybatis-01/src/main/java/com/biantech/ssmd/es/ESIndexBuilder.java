@@ -44,4 +44,7 @@ public class ESIndexBuilder {
         return esResponse;
     }
 
+    public ESResponse createUserAddressIndex(String indexName){
+        return null;
+    }
 }
