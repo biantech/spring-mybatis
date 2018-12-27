@@ -1,0 +1,32 @@
+package com.biantech.ssmd.esdao;
+
+import com.biantech.ssmd.es.DefaultESRepository;
+import org.elasticsearch.action.admin.indices.analyze.AnalyzeRequest;
+import org.elasticsearch.action.admin.indices.analyze.AnalyzeResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+/**
+ * @author 
+ * @date 2018/12/27
+ */
+@Component
+public class UserAddressESDao {
+    @Autowired
+    DefaultESRepository defaultESRepository;
+
+    public List<AnalyzeResponse.AnalyzeToken>  analyerAddress(String indexName,String analyzeText,String analyzerPattern){
+        AnalyzeRequest analyzeRequest = new AnalyzeRequest(indexName).text(analyzeText).analyzer(analyzerPattern);
+        List<AnalyzeResponse.AnalyzeToken> tokens = defaultESRepository.getClient().admin().indices()
+                .analyze(analyzeRequest)
+                .actionGet()
+                .getTokens();
+        //for (AnalyzeResponse.AnalyzeToken token : tokens) {
+            //System.out.print(token.getTerm()+" ");
+        //}
+        return tokens;
+    }
+
+}
