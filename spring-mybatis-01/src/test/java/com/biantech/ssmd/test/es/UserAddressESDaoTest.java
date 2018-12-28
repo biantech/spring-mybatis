@@ -51,4 +51,26 @@ public class UserAddressESDaoTest extends BaseTest {
         logger.info(searchText+",queryResult="+list);
     }
 
+      @Test
+    public void testSearchAddressMatch(){
+        //String searchText = "上海市闵行区长江镇梅陇村";
+        String searchText="上海";
+        List<UserAddressModel> list=userAddressESDao.searchAddressMatch(indexName,searchText);
+        logger.info(searchText+",queryResult="+list);
+        searchText="闵行区";
+        list=userAddressESDao.searchAddressMatch(indexName,searchText);
+        logger.info(searchText+",queryResult="+list);
+        searchText="长江";
+        list=userAddressESDao.searchAddressMatch(indexName,searchText);
+        logger.info(searchText+",queryResult="+list);
+        searchText="梅陇";
+        list=userAddressESDao.searchAddressMatch(indexName,searchText);
+        logger.info(searchText+",queryResult="+list);
+    }
+
+    @Test
+    public void testAll(){
+        testSearchAddress();
+        testSearchAddressMatch();
+    }
 }
