@@ -31,7 +31,9 @@ import org.elasticsearch.search.fetch.subphase.FetchSourceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 
 
 /**
@@ -40,6 +42,8 @@ import org.springframework.beans.factory.InitializingBean;
  * @author 
  * @date 2018/2/27 14:03
  */
+
+@Component
 public class DefaultESRepository<T> implements InitializingBean{
     Logger logger = LoggerFactory.getLogger(DefaultESRepository.class);
 

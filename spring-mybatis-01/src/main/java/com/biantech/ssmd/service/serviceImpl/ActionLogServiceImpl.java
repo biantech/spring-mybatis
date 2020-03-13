@@ -52,7 +52,9 @@ public class ActionLogServiceImpl implements ActionLogService {
             UserAgent agent = new UserAgent(request.getHeader("User-Agent"));   //载入user-agent
             userActionLog.setOsName(agent.getOperatingSystem().getName());  //设定os名称
             userActionLog.setBroName(StringUtils.isEmpty(agent.getBrowser().getName()) ? "" : agent.getBrowser().getName()); //设定浏览器名称
-            userActionLog.setBroVersion(StringUtils.isEmpty(agent.getBrowserVersion().getVersion()) ? "" : agent.getBrowserVersion().getVersion());    //设定浏览器版本
+            if(agent.getBrowserVersion()!=null) {
+                userActionLog.setBroVersion(StringUtils.isEmpty(agent.getBrowserVersion().getVersion()) ? "" : agent.getBrowserVersion().getVersion());    //设定浏览器版本
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

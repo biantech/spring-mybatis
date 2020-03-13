@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * 用户请求相关控制器
@@ -134,6 +135,14 @@ public class UserController {
             }
         }
         return result;
+    }
+
+    @RequestMapping(value = "/queryUserList" , method = RequestMethod.GET , produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public List<User> queryUserList(HttpServletRequest request, HttpServletResponse response, User user, HttpSession session) throws Exception {
+        //Object result;
+        List<User> userList = userService.findAll(0,10);
+        return userList;
     }
 
     @RequestMapping(value = "/uploadHeadPic"
