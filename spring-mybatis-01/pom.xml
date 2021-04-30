@@ -17,7 +17,7 @@
         <mapper.version>4.0.3</mapper.version>
         <pagehelper.version>5.1.4</pagehelper.version>
         <mysql.version>5.1.39</mysql.version>
-        <spring.version>4.3.20.RELEASE</spring.version>
+        <spring.version>4.3.29.RELEASE</spring.version>
         <mybatis.spring.version>1.3.2</mybatis.spring.version>
         <elasticsearch.version>6.5.3</elasticsearch.version>
         <jackson.version>2.10.3</jackson.version>
